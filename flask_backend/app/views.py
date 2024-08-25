@@ -51,10 +51,10 @@ def login():
     user = User.query.filter_by(email=email).first()
 
     if user is None:
-        return jsonify({'error': 'Unauthorized login'}), 401
+        return jsonify({'error': 'Incorrect username or password'}), 401
     
     if not bcrypt.check_password_hash(user.password, password):
-         return jsonify({'error': 'Unauthorized login'}), 401
+        return jsonify({'error': 'Incorrect username or password'}), 401
     
 
     session["user_id"] = user.id
@@ -71,7 +71,7 @@ def logout():
      return "200"
 
 
-@user.route('/info')
+@user.route('/info', methods=['GET'])
 def retrieve():
     user_id = session.get('user_id')
 

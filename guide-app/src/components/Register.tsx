@@ -11,13 +11,38 @@ import {
   import { LockOutlined } from "@mui/icons-material";
   import { useState } from "react";
   import { Link } from "react-router-dom";
+  import './Error.css'
+  import axios from 'axios';
   
+
   const Register = () => {
-    const [name, setName] = useState("");
+    const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-  
-    const handleRegister = async () => {};
+    const [errorMessage, setErrorMessage] = useState("");
+
+    const handleRegister = async () => {
+      //If user doesn't fill out fields
+      if(username === "" || email === "" || password === ""){
+        setErrorMessage("Please fill out all fields");
+        return;
+      }
+
+      console.log(username, email, password);
+
+      try {
+        const response = await axios.post('http://127.0.0.1:5000/register', {
+          username,
+          email,
+          password
+        })
+        console.log('successfully registered')
+        setErrorMessage("");
+      } catch (error: any) {
+        console.log(error.response.data.error)
+        setErrorMessage(error.response.data.error)
+      }
+    };
   
     return (
       <>
@@ -35,6 +60,7 @@ import {
               <LockOutlined />
             </Avatar>
             <Typography variant="h5">Register</Typography>
+            {errorMessage !== "" ? <div className="error-message">{errorMessage}</div>:null}
             <Box sx={{ mt: 3 }}>
               <Grid container spacing={2}>
                 <Grid item xs={12}>
@@ -45,8 +71,8 @@ import {
                     id="name"
                     label="Name"
                     autoFocus
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
                   />
                 </Grid>
   
