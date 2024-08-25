@@ -1,0 +1,15 @@
+#Environment variable
+app/.env
+
+#Instance folder
+instance/
+
+#Migrations folder
+migrations/
+
+#Pycache
+__pycache__/
+app/__pycache__
+
+#Dump file
+dump.rdb

@@ -26,7 +26,7 @@ def register():
         return jsonify({'error':'Email already in use'}), 409
     
     hashed_password = bcrypt.generate_password_hash(password)
-    new_user = User(username=username, email=data['email'], password=hashed_password)
+    new_user = User(username=username, email=email, password=hashed_password)
     #What is db.session? Assuming this adds to the session db?
     db.session.add(new_user)
     #Saves?
@@ -56,6 +56,7 @@ def login():
     if not bcrypt.check_password_hash(user.password, password):
          return jsonify({'error': 'Unauthorized login'}), 401
     
+
     session["user_id"] = user.id
 
     return jsonify({
