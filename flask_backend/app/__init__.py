@@ -8,8 +8,10 @@ from flask_sqlalchemy import SQLAlchemy
 from config import Config
 
 
-db: SQLAlchemy = SQLAlchemy()
-bcrypt: Bcrypt = Bcrypt()
+db = SQLAlchemy()
+bcrypt = Bcrypt()
+cors = CORS()
+session = Session()
 migrate = Migrate()
 
 #from flask_backend.app.views import main as main_blueprint
@@ -21,8 +23,9 @@ def create_app():
     db.init_app(app)
     bcrypt.init_app(app)
     migrate.init_app(app, db)
-    CORS(app, supports_credentials=True)
-    Session(app)
+    cors.init_app(app, supports_credentials=True)
+    session.init_app(app)
+    #CORS(app, supports_credentials=True)
     
 
     #Registering blueprint

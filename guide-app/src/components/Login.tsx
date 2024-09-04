@@ -35,16 +35,19 @@ const Login = () => {
       const response = await axios.post('http://127.0.0.1:5000/login', {
         email,
         password
-      })
-      console.log('successfully logged in')
+      }, {
+        withCredentials: true,
+      });
+      console.log(response.data.message);
       setErrorMessage("");
-      window.location.href = "/"
+      window.location.href = "/";
     } catch (error: any) {
       setErrorMessage(error.response.data.error);
       console.log(error.response.data.error)
     }
 
   };
+
 
   return (
     <>

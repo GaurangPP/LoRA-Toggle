@@ -15,10 +15,10 @@ interface ButtonProps {
     buttonSize?: string;               // Assuming buttonSize is a string (e.g., a CSS class)
 }
 
-export const Button= ({children, to='/', type, onClick, buttonStyle = STYLES[0], buttonSize = SIZES[0]}: ButtonProps) => {
-    const checkButtonStyle = STYLES.includes(buttonStyle) ? buttonStyle : STYLES[0];
+export const Button= ({children, to='/', type, onClick, buttonStyle, buttonSize}: ButtonProps) => {
+    const checkButtonStyle = (typeof buttonStyle !== 'undefined' && STYLES.includes(buttonStyle)) ? buttonStyle : STYLES[0];
 
-    const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0];
+    const checkButtonSize = (typeof buttonSize !== 'undefined' && SIZES.includes(buttonSize)) ? buttonSize : SIZES[0];
 
     return (
         <Link to={to} className='btn-mobile'>

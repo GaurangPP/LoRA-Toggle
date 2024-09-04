@@ -1,4 +1,5 @@
-from flask import Blueprint, jsonify, request, session 
+from flask import Blueprint, jsonify, request, session
+from flask_cors import cross_origin 
 from .models import User
 from app import bcrypt, db
 
@@ -38,7 +39,7 @@ def register():
         'username': new_user.username,
         'email': new_user.email,
         'message': 'User registered successfully'
-        })
+        }), 200
 
 @user.route('/login', methods=['POST'])
 def login():
@@ -63,15 +64,16 @@ def login():
         'id': user.id,
         'email': user.email,
         'message': 'Successfully logged in'
-    })
+    }), 200
 
-@user.route("/logout", methods=["POST"])
+
+@user.route('/logout', methods=['POST'])
 def logout():
      session.pop("user_id")
-     return "200"
+     return jsonify({'message': 'User logged out successfully'}), 200
 
 
-@user.route('/info', methods=['GET'])
+@user.route('/info', methods=["GET"])
 def retrieve():
     user_id = session.get('user_id')
 
@@ -84,6 +86,6 @@ def retrieve():
         "id": user.id,
         "username": user.username,
         "email": user.email
-    })
+    }), 200
 
 

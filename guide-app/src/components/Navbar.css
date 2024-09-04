@@ -37,7 +37,7 @@
   
   .nav-menu {
     display: grid;
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(5, auto); /*This determines the number of navbar links*/
     grid-gap: 10px;
     list-style: none;
     text-align: center;
@@ -157,4 +157,15 @@
       color: #242424;
       transition: 250ms;
     }
+  }
+
+  .navbar-username {
+    color: white; /* Sets the text color to white */
+    text-align: center; /* Horizontally centers the text */
+    display: flex; /* Enables Flexbox for further centering */
+    justify-content: center; /* Horizontally centers the content */
+    align-items: center; /* Vertically centers the content */
+    height: 100px; /* Optional: Set the height of the div */
+    background-color: #333; /* Optional: Set a background color for contrast */
+    white-space: nowrap; /* Prevents the text from wrapping to the next line */
   }

@@ -35,7 +35,10 @@ import {
           username,
           email,
           password
-        })
+        },{
+          withCredentials: true,
+        });
+        
         console.log('successfully registered')
         setErrorMessage("");
       } catch (error: any) {

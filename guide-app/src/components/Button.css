@@ -5,6 +5,7 @@
 .btn {
     padding: 8px 20px;
     border-radius: 2px;
+    white-space: nowrap; /*Ensures text is on a singular line*/
     outline: none;
     border: none;
     cursor: pointer;
@@ -22,6 +23,7 @@
     padding: 8px 20px;
     border: 1px solid var(--primary);
     transition: all 0.3s ease-out;
+    
 }
 
 .btn--medium {
