@@ -1,2 +1,2 @@
-# GuideGenerator
-A website that uses LLMs and image generators cohesively to generate graphics that represent guides, to-dos, etc
+# LoRA Toggle
+A website that uses LoRA finetuning on Llama 3.1 models to deliver excellent generative AI responses using an open source model.
