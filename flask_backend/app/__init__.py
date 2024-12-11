@@ -29,8 +29,10 @@ def create_app():
     
 
     #Registering blueprint
-    from .views import user
-    app.register_blueprint(user)
+    from .views import user, chat
+    app.register_blueprint(user, url_prefix = '/user')
+    app.register_blueprint(chat, url_prefix = '/chat')
+
 
     with app.app_context():
         db.create_all()  # Create all tables

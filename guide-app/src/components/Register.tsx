@@ -28,10 +28,27 @@ import {
         return;
       }
 
+      //Ensure email matches regex
+      const validateEmail = (email: string) => {
+
+        const re = new RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+        return String(email)
+          .toLowerCase()
+          .match(
+            re
+          );
+      };
+
+      if(!(validateEmail(email))){
+        setErrorMessage("Please enter a valid email");
+        return;
+      }
+
+
       console.log(username, email, password);
 
       try {
-        const response = await axios.post('http://127.0.0.1:5000/register', {
+        const response = await axios.post('http://127.0.0.1:5000/user/register', {
           username,
           email,
           password
@@ -41,6 +58,7 @@ import {
         
         console.log('successfully registered')
         setErrorMessage("");
+        window.location.href = "/";
       } catch (error: any) {
         console.log(error.response.data.error)
         setErrorMessage(error.response.data.error)
@@ -72,7 +90,7 @@ import {
                     required
                     fullWidth
                     id="name"
-                    label="Name"
+                    label="Username"
                     autoFocus
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}

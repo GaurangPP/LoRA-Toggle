@@ -7,6 +7,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import ChatWindow from './components/ChatWindow';
 import  Account  from './components/Account';
+import SavedChats from './components/SavedChats';
 
 function App() {
   //State for the user being logged in (null means not logged in)
@@ -20,6 +21,7 @@ function App() {
         <Navbar user = {user} setUser={setUser}/>
         <Routes>
           <Route path='/'  element={<ChatWindow/>}/>
+          <Route path='/saved' element={<SavedChats />}/>
           <Route path='/account' element={<Account setUser={setUser}/>}/>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/register' element={<Register />}></Route>

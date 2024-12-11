@@ -3,9 +3,11 @@ import React from 'react'
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css'
 import { MainContainer, ChatContainer, Message, MessageList, MessageInput, TypingIndicator } from '@chatscope/chat-ui-kit-react'
 import { MessageDirection } from "@chatscope/chat-ui-kit-react/src/types/unions";
+import { Button } from "./Button";
+import SaveChatDialog from "./SaveChatDialog";
 
 
-type MessageType = {
+export type MessageType = {
     message: string,
     sender: string,
     direction: MessageDirection,
@@ -21,11 +23,13 @@ const ChatWindow = () => {
   const [typing, setTyping] = useState(false);
   const [messages, setMessages] = useState<MessageType[]>([{
     message: "Hello",
-    sender: "ChatGPT",
+    sender: "model",
     direction: incoming,
     position: position
   }
   ]) // []
+
+  const [openDialog, setOpenDialog] = useState(false);
 
   const handleSend = async (message: string) => {
     const newMessage = {
@@ -44,6 +48,19 @@ const ChatWindow = () => {
     setTyping(true);
     //Process message to model (sen)
   }
+
+  //Saves user conversation
+  const handleSave = async () => {
+
+
+
+    try {
+
+    }
+    catch {
+
+    }
+  };
 
   return (
     <div style={{
@@ -68,7 +85,12 @@ const ChatWindow = () => {
             </ChatContainer>
         </MainContainer>
     </div>
+    <div>
+        <Button buttonStyle="btn--outline" onClick={() => setOpenDialog(true)}>SAVE</Button>
+        <SaveChatDialog open={openDialog} onClose={() => setOpenDialog(false)} messages={messages} />
     </div>
+    </div>
+
   )
 };
 

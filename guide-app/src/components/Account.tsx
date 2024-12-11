@@ -11,7 +11,7 @@ const Account = ({setUser}: {setUser: React.Dispatch<React.SetStateAction<any>>}
 
     const checkSession = async () => {
         try{
-            const response = await axios.get('http://127.0.0.1:5000/info', {
+            const response = await axios.get('http://127.0.0.1:5000/user/info', {
                 withCredentials: true,
             });
 
@@ -29,7 +29,7 @@ const Account = ({setUser}: {setUser: React.Dispatch<React.SetStateAction<any>>}
 
     const handleLogout = async () => {
         try{
-            const response = await axios.post('http://127.0.0.1:5000/logout', {}, {
+            const response = await axios.post('http://127.0.0.1:5000/user/logout', {}, {
                 withCredentials: true,
             });
             setUser(null);

@@ -18,8 +18,8 @@ class Config:
     SESSION_USE_SIGNER = True
     SESSION_REDIS = redis.from_url('redis://127.0.0.1:6379')
 
-    SESSION_COOKIE_HTTPONLY = False
-    SESSION_COOKIE_SECURE = True  # Set to True if using HTTPS
+    SESSION_COOKIE_HTTPONLY = True
+    SESSION_COOKIE_SECURE = False  # Set to True if using HTTPS
     SESSION_COOKIE_SAMESITE = 'None'  # Or 'None' if needed
 
     CORS_SUPPORTS_CREDENTIALS=True

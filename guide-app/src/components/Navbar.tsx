@@ -16,15 +16,13 @@ const Navbar = ({user, setUser}: {user: any, setUser: React.Dispatch<React.SetSt
         if(window.innerWidth <= 960) {
             setButton(false);
         } else {
-            
             setButton(true);
-            
         }
     };
 
     const checkSession = async () => {
         try{
-            const response = await axios.get('http://127.0.0.1:5000/info', {
+            const response = await axios.get('http://127.0.0.1:5000/user/info', {
                 withCredentials: true,
             });
 
